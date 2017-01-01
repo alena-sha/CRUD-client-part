@@ -1,0 +1,57 @@
+<md-dialog>
+ <md-dialog-content>
+      <div class="md-dialog-content">
+     <table class="table table-bordered table-hover table-condensed">
+    <tr style="font-weight: bold">
+   
+      <td style="width:25%">{{'NAME' | translate}}</td>
+      <td style="width:45%">{{'CONTENT' | translate}}</td>
+      <td style="width:15%">{{'PRIORITY'| translate}}</td>
+      <td style="width:15%"><md-icon>create</md-icon><md-icon>remove</md-icon></td>
+    </tr>
+    <tr ng-repeat="task in tasks|orderBy: '+priority'">
+           
+      <td>
+       
+        <span editable-text="task.name" e-name="name" e-form="taskform" >
+          {{ task.name }}
+        </span>
+      </td>
+       <td>
+        <span editable-text="task.content" e-name="content" e-form="taskform" >
+          {{ task.content }}
+        </span>
+      </td>
+      <td>
+        <span editable-select="task.priority" e-name="priority" e-form="taskform" e-ng-options="p.value as p.text for p in priorities">
+         <span ng-if="task.priority==1">high</span>
+          <span ng-if="task.priority==2">medium</span>
+           <span ng-if="task.priority==3">low</span>
+         
+        </span>
+      </td>
+     
+      <td style="white-space: nowrap">
+        <!-- form -->
+        <form editable-form name="taskform" onbeforesave="saveTask($data,task.id)" ng-show="taskform.$visible" class="form-buttons form-inline" shown="inserted == task">
+          <button type="submit" ng-disabled="taskform.$waiting" class="btn btn-primary">
+          <md-icon> done </md-icon>
+          </button>
+          <button type="button" class="btn btn-danger" ng-disabled="taskform.$waiting" ng-click="taskform.$cancel()" class="btn btn-default">
+           <md-icon> clear</md-icon>
+          </button>
+        </form>
+        <div class="buttons" ng-show="!taskform.$visible">
+          <button type="button" class="btn btn-primary" ng-click="taskform.$show()"><md-icon>create</md-icon></button>
+          <button type="button" class="btn btn-danger" ng-click="removeTask(task)"><md-icon>remove</md-icon></button>
+        </div>  
+      </td>
+    </tr>
+  </table>
+
+  <button type="button" class="btn btn-primary" ng-click="addTask()"> <md-icon>add</md-icon></button>
+</div>
+</md-dialog-content>
+
+</md-dialog>
+	

@@ -1,0 +1,55 @@
+
+	 <div ng-controller="ListController" >
+	
+  <md-toolbar class="md-table-toolbar md-default" flex="70">
+          <div class="md-toolbar-tools">
+            
+            <div flex></div>
+             <input class="md-primary" layout-align="left" ng-model="search" placeholder="{{'SEARCH'|translate}}"/>
+             <md-button class="md-icon-button" ng-click="edit(0,$event)">
+              <md-icon>note add</md-icon>
+            </md-button>
+            <md-button class="md-icon-button" ng-click="deleteEmp(selected, $event)">
+              <md-icon>delete</md-icon>
+            </md-button>
+            
+          </div>
+        </md-toolbar>
+
+	
+		<md-table-container>
+  <table md-table md-row-select multiple ng-model="selected" flex="70" align="center">
+    <thead md-head >
+      <tr md-row>
+       
+        <th md-column md-numeric>{{'NAME' | translate}}</th>
+        <th md-column md-numeric>{{'SURNAME' | translate}}</th>
+        <th md-column md-numeric>{{'AGE'| translate}}</th>
+        <th md-column md-numeric>{{'POSITION' | translate}}</th>
+        <th md-column md-numeric>{{'COMMENT'| translate}}</th>
+          <th md-column md-numeric>{{'IMAGE'| translate}}</th>
+         <th md-column md-numeric>{{'TASKS'| translate}}</th>
+        <th md-column md-numeric>{{ 'EDIT' | translate }}</th>
+      </tr>
+    </thead>
+    <tbody md-body>
+     <tr md-row md-select="emp" md-select-id="id" md-auto-select ng-repeat="emp in employees|filter:search">
+     
+        <td md-cell>{{emp.firstName}}</td>
+        <td md-cell>{{emp.lastName}}</td>
+        <td md-cell>{{emp.dateOfBirth.dayOfMonth}}/{{emp.dateOfBirth.monthValue}}/{{emp.dateOfBirth.year}}</td>
+        <td md-cell>{{emp.position}}</td>
+        <td md-cell>{{emp.comment}}</td>
+       <td md-cell ng-if="emp.image!=null"><img ng-src="data:image/JPEG;base64,{{emp.image}}" border="0" width="40" height="50" ng-click="showImage(emp.image,$event)" /></td>
+   		<td md-cell ng-if="emp.image==null"><img ng-src="resources/img/noimage.jpg" border="0" width="40" height="50" /></td>
+   		 <td md-cell ng-controller="TasksController"><a href="" ng-click="taskList(emp.id,$event)" >{{ 'TASKS' | translate }}</a></td>
+   		
+   		<td md-cell><a href="" ng-click="edit(emp.id,$event)" >{{ 'EDIT' | translate }}</a></td>
+    </tr>
+    </tbody>
+  </table>
+</md-table-container>
+	
+	</div> 
+	
+	

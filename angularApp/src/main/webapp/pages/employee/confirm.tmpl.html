@@ -1,0 +1,26 @@
+<md-dialog aria-label="Confirmation Dialog" flex="30">
+  <form ng-cloak>
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+        <h2>{{'CONFIRM'|translate}}</h2>
+        <span flex></span>
+        <md-button class="md-icon-button" ng-click="cancel()">
+         <md-icon> clear</md-icon>
+        </md-button>
+      </div>
+    </md-toolbar>
+
+    <md-dialog-content>
+      <div class="md-dialog-content">
+        <h4>{{'CONFIRM_TEXT'|translate}}</h4>
+       
+      </div>
+    </md-dialog-content>
+     <md-dialog-actions layout="row" align="center">
+     
+      <md-button ng-click="confirm()">
+       <md-icon> delete </md-icon>
+      </md-button>
+    </md-dialog-actions>
+  </form>
+</md-dialog>

@@ -1,0 +1,30 @@
+<form name="loginForm">
+	<div layout="column" layout-align="center center" style="min-height:400px;" ng-controller="LoginController" >
+ ` 	<div layout="row" layout-align="center">
+   		<h2>{{'ENTER'|translate}}</h2>
+  	</div>
+  	<div layout="row" layout-align="center"  ng-show="noauth">
+   		<h4 style="color:red">{{'ERROR_UNAUTHORIZED'|translate}}</h4>
+  	</div>
+  	<div layout="row" layout-align="center">
+  		<md-input-container class="md-warn">
+        	<label for="username">{{'LOGIN'|translate}}</label>
+        	<input type="text" id="username" name="username" ng-model="credentials.username"  ng-minlength="3" 
+        ng-maxlength="10" required md-maxlength="10"/>
+           	<valid name="loginForm.username.$error"/> <!--my own directive for simple validation-->
+   		</md-input-container>
+   </div>
+   <div layout="row" layout-align="center">
+   		<md-input-container class="md-warn">
+        	<label for="password">{{'PASSWORD'|translate}}</label> 
+        	<input type="password" id="password" name="password" ng-model="credentials.password"  ng-minlength="3" 
+        ng-maxlength="10" required md-maxlength="10"/>
+    	<valid name="loginForm.password.$error"/>
+        	   		</md-input-container>  
+   </div>
+   <div layout="row" layout-align="center">
+    	<md-button ng-click="login()" class="md-icon-button"><md-icon>input</md-icon></md-button>
+  </div>
+
+</div>
+</form>

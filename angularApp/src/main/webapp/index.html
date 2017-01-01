@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf8">
+<title>App: Employees</title>
+ <link rel="stylesheet" href="lib/angular-material/angular-material.css">
+ <link href="lib/angular-xeditable/xeditable.css" rel="stylesheet">
+ <link href="lib/bootstrap/bootstrap.min.css" rel="stylesheet">
+ 
+ <link href="lib/angular-material-data-table/md-data-table.css" rel="stylesheet" type="text/css"/>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body ng-app="employeesApp" >
+
+<md-toolbar class="md-primary">
+<div ng-controller="translateCtrl" align="right">
+ 
+ 	 <a href="" ng-click="changeLng('ru')" ng-class="{'selected' : currentLng('ru')}"><img src="resources/img/ru.png" /></a>
+     <a href="" ng-click="changeLng('en')" ng-class="{'selected' : currentLng('en')}"><img src="resources/img/us.png"/></a>
+
+</div>
+<span align="center">{{'TITLE'|translate}}</span>
+<div ng-hide="hideit">
+<md-menu>
+ <md-button class="md-warn" ng-click="$mdOpenMenu($event)">
+   <md-icon>menu</md-icon>
+ </md-button>
+ <md-menu-content>
+   <md-menu-item><md-button class="md-accent" ng-href="#/list">{{'MENULIST'|translate}}</md-button></md-menu-item>
+   <md-menu-item><md-button class="md-accent" ng-href="#/">{{'MENULOGOUT'|translate}}</md-button></md-menu-item>
+ </md-menu-content>
+</md-menu>
+
+</div>
+</md-toolbar>
+ <div ng-view></div>
+
+
+	<script src="lib/angular/angular.js"></script>
+	<script src="lib/angular-resource/angular-resource.js"></script>
+	<script src="lib/angular-route/angular-route.js"></script>
+	<script src="lib/angular-translate/angular-translate.js"></script>
+	<script src="lib/angular-material/angular-material.js"></script>
+	<script src="lib/angular-animate/angular-animate.js"></script>
+	<script src="lib/angular-aria/angular-aria.js"></script>
+	<script src="lib/angular-messages/angular-messages.js"></script>
+	<script src="lib/angular-material-data-table/md-data-table.js"></script>
+	<script src="lib/moment/moment.js"></script>
+	<script src="lib/angular-xeditable/xeditable.js"></script>
+	<script src="lib/jquery/jquery.js"></script>
+	<script src="lib/bootstrap/bootstrap.js"></script>	
+	<script src="resources/js/app.js"></script> 
+	<script src="resources/js/i18n.js"></script>  
+	<script src="resources/js/routes.js"></script> 
+	<script src="resources/js/employee/employeeModule.js"></script>  
+	<script src="resources/js/login/loginModule.js"></script> 
+	<script src="resources/js/task/taskModule.js"></script> 
+</body>
+</html>

@@ -1,0 +1,123 @@
+<form name="editForm">
+<md-dialog  >
+<md-toolbar>
+    <div class="md-toolbar-tools">
+      <h2>{{ 'DIALOG_LABEL' | translate }}</h2>
+     
+      <span flex></span>
+      
+      </div>
+</md-toolbar>
+  <md-dialog-content layout="column" style="max-width:600px;max-height:400px; ">
+   <div ng-show="formErrors">
+      <p style="color:red">{{ 'DIALOG_ERRORS' | translate }}</p>
+      </div>
+	 <md-input-container flex> 
+	 </md-input-container>
+ 	<md-input-container flex >
+		<label>{{ 'NAME' | translate }}</label>
+  		<input ng-model="employee.firstName" name="firstName" ng-minlength="2" 
+        ng-maxlength="15" required md-maxlength="15"/>
+  	<valid name="editForm.firstName.$error" md-block/>
+  	</md-input-container> 
+	<md-input-container flex >
+	</md-input-container> 
+	<md-input-container flex >
+	
+		<label>{{ 'SURNAME' | translate }}</label>
+		
+		<input ng-model="employee.lastName" name="lastName" ng-minlength="2" 
+        ng-maxlength="30" required md-maxlength="30">
+       <valid name="editForm.lastName.$error" md-block/>
+ 	</md-input-container> 
+ 	<md-input-container flex >
+	</md-input-container> 
+	
+	<md-input-container flex >
+	
+		<label>{{ 'BROWSEIMAGE' | translate }}</label>
+		
+			
+	<input type="file" file-model="image" placeholder="Browse image" accept="image/*">
+	</md-input-container>
+	
+	<md-input-container flex >
+	</md-input-container> 
+	
+	<md-input-container flex>
+		<label>{{ 'GENDER'|translate }}</label>
+		 <md-select ng-model="employee.gender" class="md-no-underline" name="gender" required>
+          <md-option value="f">{{ 'FEMALE'|translate }}</md-option>
+          <md-option value="m">{{ 'MEN'|translate }}</md-option>
+         
+        </md-select>
+		<valid name="editForm.gender.$error"/>
+	</md-input-container>
+ 	<md-input-container flex >
+	</md-input-container> 
+ 		<md-input-container flex>
+<!--     <label>{{employee.dateOfBirth.dayOfMonth}}/{{employee.dateOfBirth.monthValue}}/{{employee.dateOfBirth.year}}</label>  -->
+     <md-datepicker ng-model="dateObj" name="dateOfBirth" md-min-date="mindate" md-max-date="maxdate"> -->
+         </md-datepicker>
+
+        <div class="validation-messages" ng-messages="editForm.dateOfBirth.$error">
+          <div ng-message="valid">The entered value is not a date!</div>
+          <div ng-message="required">This date is required!</div>
+          <div ng-message="mindate">Date is too early!</div>
+          <div ng-message="maxdate">Date is too late!</div>
+          
+        </div> 
+        </md-input-container>
+      
+      <md-input-container flex >
+	</md-input-container> 	
+		
+	<md-input-container flex>
+		<label>{{ 'POSITION'|translate }}</label>
+		<input ng-model="employee.position" name="position" ng-minlength="3" 
+        ng-maxlength="50" required md-maxlength="50">
+		<valid name="editForm.position.$error"/>
+	</md-input-container>
+	<md-input-container flex >
+	</md-input-container> 
+	<md-input-container flex>
+		<label>{{ 'COMMENT'|translate }}</label>
+		<input ng-model="employee.comment" name="comment"  
+        ng-maxlength="30" >
+		<valid name="editForm.comment.$error"/>
+  </md-input-container>
+   <md-input-container flex >
+	</md-input-container> 
+   <md-input-container flex>
+		<label>{{ 'LOGIN'|translate }}</label>
+		<input ng-model="employee.login" required name="login" ng-minlength="3" 
+        ng-maxlength="50" required md-maxlength="50">
+		<valid name="editForm.login.$error"/>
+  </md-input-container>
+   <md-input-container flex >
+	</md-input-container> 
+   <md-input-container flex>
+   		<label>{{ 'PASSWORD'|translate }}</label>
+   		<input type="password" ng-model="employee.password" name="password" ng-minlength="3" 
+        ng-maxlength="50" required md-maxlength="50"/>
+   		<valid name="editForm.password.$error"/>
+  </md-input-container>
+  
+  
+  </md-dialog-content>
+  
+  <md-dialog-actions>
+		<md-button class="md-fab md-primary" aria-label="{{ 'CLOSE' | translate }}" ng-click="closeDialog()">
+  		<md-icon> clear</md-icon>
+		</md-button>
+		
+  		<md-button class="md-fab md-primary" aria-label="{{ 'SAVE' | translate }}" ng-click="saveEmployee()">
+  		<md-icon> save</md-icon>
+		</md-button>
+  </md-dialog-actions>
+</md-dialog>
+</form>		
+		
+		 
+	
+	
