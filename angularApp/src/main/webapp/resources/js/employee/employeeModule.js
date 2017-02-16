@@ -207,8 +207,9 @@ employeeModule.controller('DialogEditController', [  '$scope','$rootScope', '$ro
 				
 				var fd = new FormData();
 			    fd.append('data', JSON.stringify(employee));
-			    fd.append("file", $scope.image);
-			   $http({
+			   	fd.append("file", $scope.image);	
+			   
+			    $http({
 			        method: 'POST',
 			        url: 'http://localhost:8080/crudProject/employee',
 			        headers: $rootScope.credentials,  			         
